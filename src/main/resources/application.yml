@@ -1,0 +1,4 @@
+# Configuracion ruta banner
+spring:
+  banner:
+      location: folderexample/banner.txt

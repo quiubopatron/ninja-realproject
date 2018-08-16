@@ -2,3 +2,9 @@
 spring:
   banner:
       location: folderexample/banner.txt
+
+# Deshabilita mostrar mensaje de error por defecto de spring y muestra el de tomcat
+server:
+  error:
+      whitelabel:
+        enabled: false

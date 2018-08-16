@@ -1,6 +1,10 @@
 package com.udemy.backendninja.controller;
 
+import com.udemy.backendninja.component.ExampleComponent;
 import com.udemy.backendninja.model.Person;
+import com.udemy.backendninja.service.ExampleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +19,18 @@ import java.util.List;
 @RequestMapping("example")
 public class ExampleController {
 
+    // Ejemplo inyeccion de un bean de tipo Component
+    @Autowired
+    @Qualifier("exampleComponent")
+    private ExampleComponent exampleComponent;
+
+    // Ejemplo inyeccion de un servicio, se importa la interfaz no la implementacion
+    @Autowired
+    @Qualifier("exampleService")
+    private ExampleService exampleService;
+
     public static final String EXAMPLE_VIEW = "example";
+
     // Primeraforma
     @RequestMapping(value = "/exampleString", method = RequestMethod.GET)
     public String exampleString(Model model) {
@@ -29,7 +44,7 @@ public class ExampleController {
     public ModelAndView exampleMAV(){
 
         ModelAndView modelAndView = new ModelAndView(EXAMPLE_VIEW);
-        modelAndView.addObject("personas", getPersonas());
+        modelAndView.addObject("personas", exampleService.getListPeople());
         return modelAndView;
 
 //        return new ModelAndView(EXAMPLE_VIEW);
@@ -37,7 +52,7 @@ public class ExampleController {
 
     private List<Person> getPersonas() {
 
-
+        exampleComponent.sayHello();// Ejemplo de la inyeccion del bean
         List<Person> personas = new ArrayList<>();
         Person person1 = new Person("Tomas", 37);
         Person person2 = new Person("Vanessa", 31);

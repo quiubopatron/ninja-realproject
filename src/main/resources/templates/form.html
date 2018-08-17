@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo Formulario</title>
+</head>
+<body>
+<form action="#" th:action="@{/example3/addperson}" th:object="${persona}" th:method="post">
+
+<p>Nombre:<input type="text" th:field="*{name}" /></p>
+<p>Edad:<input type="text" th:field="*{age}" /></p>
+    <p><input type="submit" value="Enviar"></p>
+
+</form >
+
+
+</body>
+</html>

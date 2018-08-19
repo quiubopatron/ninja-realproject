@@ -30,7 +30,7 @@ public class example2Controller {
         ModelAndView modelAndView = new ModelAndView(EXAMPLE_2);
         modelAndView.addObject("nm_in_model", name);
 
-//        int i = 6/0;
+        int i = 6/0; // Prueba para lanzar mensaje de error desde error Controller
         return modelAndView;
     }
 

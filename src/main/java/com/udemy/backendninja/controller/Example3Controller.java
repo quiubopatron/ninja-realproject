@@ -12,7 +12,7 @@ import javax.validation.Valid;
 // Ejemplo de formulario
 @Controller
 @RequestMapping("/example3")
-public class example3Controller {
+public class Example3Controller {
 
     public static final String FORM = "form";
 

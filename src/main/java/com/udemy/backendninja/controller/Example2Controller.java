@@ -11,9 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/example2")
-public class example2Controller {
+public class Example2Controller {
 
-    private static final Log LOGGER = LogFactory.getLog(example2Controller.class);
+    private static final Log LOGGER = LogFactory.getLog(Example2Controller.class);
 
     public static final String EXAMPLE_2 = "example2";
 

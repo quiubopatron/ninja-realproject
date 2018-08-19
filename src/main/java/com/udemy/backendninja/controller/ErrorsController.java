@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class errorsController {
+public class ErrorsController {
 
     public static final String ERROR_500 = "/error/500";
 

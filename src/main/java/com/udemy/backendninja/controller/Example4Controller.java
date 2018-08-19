@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller()
 @RequestMapping("/example4")
-public class example4Controller {
+public class Example4Controller {
 
     @GetMapping("/error")
     public String mostrarError(Model model) {

@@ -1,0 +1,27 @@
+# Configuracion ruta banner
+spring:
+  banner:
+      location: folderexample/banner.txt
+
+# Base de datos local
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydb?useSSL=false
+    username: root
+    password: root
+
+# JPA configuration
+  jpa:
+    hibernate:
+      ddl-auto:
+        generate-ddl: true # Poner a true para generar las tablas
+      dll-auto: create # Poner a create para generar las tablas
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    show-sql: true
+
+
+# Deshabilita mostrar mensaje de error por defecto de spring y muestra el de tomcat
+server:
+  error:
+      whitelabel:
+        enabled: false

@@ -51,7 +51,6 @@ public class EjercicioController {
         return "redirect:/ejercicio/dos";
     }
 
-
     @GetMapping("/dos")
     public ModelAndView metodoDos() {
         ModelAndView modelAndView = new ModelAndView("ejercicio");

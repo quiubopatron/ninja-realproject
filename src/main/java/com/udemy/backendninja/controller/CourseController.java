@@ -43,10 +43,21 @@ public class CourseController {
 
         LOG.info("Call:" + "addCourse()" + "-- Para,: " + course.toString());
 
-
         courseServiceImp.addCourse(course);
 
         return "redirect:/course/listcourses";
+    }
+
+    // TODO Continuar
+    @PostMapping("/updatecourse")
+    public String updateCourse (@ModelAttribute("course") Course course) {
+
+        LOG.info("Call:" + "updateCourse()" + "-- Para,: " + course.toString());
+
+        courseServiceImp.updateCourse(course);
+
+
+
     }
 
 }

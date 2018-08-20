@@ -75,4 +75,14 @@ public class Course {
         this.hours = hours;
     }
 
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", hours=" + hours +
+                '}';
+    }
 }

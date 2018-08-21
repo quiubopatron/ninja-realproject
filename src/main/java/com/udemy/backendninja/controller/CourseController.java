@@ -21,7 +21,6 @@ public class CourseController {
     private static final Log LOG = LogFactory.getLog(CourseController.class);
 
     @Autowired
-
     @Qualifier("CourseServiceImp")
     private CourseServiceImp courseServiceImp;
 
@@ -56,7 +55,7 @@ public class CourseController {
 
         courseServiceImp.updateCourse(course);
 
-
+        return "";
 
     }
 

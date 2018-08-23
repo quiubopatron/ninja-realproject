@@ -27,18 +27,27 @@ public class ContactController {
 
 
     @GetMapping("/contactsform")
-    private String redirectContactForm(Model model) {
-        model.addAttribute("contactModel", new ContactModel());
+    private String redirectContactForm(@RequestParam(name="id", required=false) Long id, Model model) {
+
+        ContactModel contactModel;
+
+        if(id == null) {
+            model.addAttribute("contactModel", new ContactModel());
+        } else {
+            contactModel = contactService.findContactById(id);
+            model.addAttribute("contactModel", contactModel);
+        }
+
         return ViewConstant.CONTACT_FORM;
     }
 
     @GetMapping("/cancel")
     private String redirectContacts() {
 
-        return ViewConstant.CONTACTS;
+        return "redirect:/contacts/listcontacts";
     }
 
-    @PostMapping("/addcontact")
+    @PostMapping("/addcontact/listcontacts")
     private String addContact(@ModelAttribute(name = "contactModel") ContactModel contactModel, Model model) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 
         log.info("METHOD: addContact() -- PARAMS: userCredentials: " + contactModel.toString());
@@ -67,5 +76,5 @@ public class ContactController {
 
         return ViewConstant.CONTACTS;
 
-        }
+    }
 }

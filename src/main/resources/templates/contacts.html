@@ -35,37 +35,18 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>656765678</td>
-						<td>Berlin</td>
+					<tr th:each="contact : ${contactlist}">
+						<td th:text="${contact.firstname}">Mark</td>
+						<td th:text="${contact.lastname}">Otto</td>
+						<td th:text="${contact.telephone}">56765678</td>
+						<td th:text="${contact.city}">Berlin</td>
 						<td>
 							<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-						
-							<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-						</td>
-					</tr>
-					<tr>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>234324567</td>
-						<td>Madrid</td>
-						<td>
-							<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-						
-							<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-						</td>
-					</tr>
-					<tr>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>324565678</td>
-						<td>Amsterdam</td>
-						<td>
-							<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-						
-							<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+
+							<a href="#" th:href="@{/contacts/removecontact?id=__${contact.id}__}">
+								<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							</a>
+
 						</td>
 					</tr>
 				</tbody>
@@ -75,7 +56,7 @@
 		<div th:if="${result == 1}" class="btn-alert alert-sucess" role="danger">Succes!!!!</div>
 
 
-		<a href="#" th:href="@{contacts/contactsform}">
+		<a href="#" th:href="@{/contacts/contactsform}">
 		<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add contact</button>
 		</a>
 

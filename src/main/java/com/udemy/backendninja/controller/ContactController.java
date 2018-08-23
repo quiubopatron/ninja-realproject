@@ -10,11 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.lang.reflect.InvocationTargetException;
 
 @Controller
 @RequestMapping("/contacts")
@@ -40,15 +39,33 @@ public class ContactController {
     }
 
     @PostMapping("/addcontact")
-    private String addContact(@ModelAttribute(name = "contactModel") ContactModel contactModel, Model model) {
+    private String addContact(@ModelAttribute(name = "contactModel") ContactModel contactModel, Model model) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 
         log.info("METHOD: addContact() -- PARAMS: userCredentials: " + contactModel.toString());
         model.addAttribute("result", 1);
 
         contactService.addContact(contactModel);
 
-        return ViewConstant.CONTACTS;
+        return "redirect:/contacts/listcontacts";
     }
 
+    @GetMapping("/listcontacts")
+    private String listContacts(Model model) {
 
+        model.addAttribute("contactlist", contactService.findAllContacts());
+
+        return ViewConstant.CONTACTS;
+
+    }
+
+    @GetMapping("/removecontact") // tocaria hacerlo con put, pero para nohace ajax y javascript usamos get
+    public String removeContact(@RequestParam(name="id", required=true) String contactId, Model model ) {
+
+        contactService.removeContact(Long.valueOf(contactId));
+
+        model.addAttribute("contactlist", contactService.findAllContacts());
+
+        return ViewConstant.CONTACTS;
+
+        }
 }
